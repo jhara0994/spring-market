@@ -1,4 +1,3 @@
-import { gql } from '@apollo/client'
+import React from 'react'
 
-export const MUTATION_LOGIN = gql`
-`
+
