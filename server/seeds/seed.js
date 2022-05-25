@@ -44,9 +44,23 @@ db.once('open', async () => {
             category: [categories[0]._id, categories[1]._id]
         },
         {
-            title: "Palms in Pretty Pots",
+            title: "Palms in Pretty Pots (Small)",
             description: "North American indoor palms adorned with a beautiful custom pot.",
             price: 100,
+            image: "",
+            category: categories[2]._id
+        },
+        {
+            title: "Palms in Pretty Pots (Medium)",
+            description: "North American indoor palms adorned with a beautiful custom pot.",
+            price: 150,
+            image: "",
+            category: categories[2]._id
+        },
+        {
+            title: "Palms in Pretty Pots (Large)",
+            description: "North American indoor palms adorned with a beautiful custom pot.",
+            price: 200,
             image: "",
             category: categories[2]._id
         },

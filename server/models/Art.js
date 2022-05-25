@@ -11,6 +11,9 @@ const artSchema = new Schema({
         type: String,
         required: true
     },
+    image: {
+        type: String
+    },
     price: {
         type: Number,
         required: true,
