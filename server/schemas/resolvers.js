@@ -31,6 +31,43 @@ const resolvers = {
             if(_id) {
                 await User.findById(_id)
             }
+            else { 
+                throw new AuthenticationError('No ID Provided!')
+            }
+        }
+    },
+    Mutation: {
+        addUser: async(parent, args) => {
+            const user = await User.create(args)
+            const token = signToken(user)
+
+            return { token, user }
+        },
+        addArt: async(parent, args) => {
+            try {
+                const newSale = await Art.create({ ...args })
+                await User.findByIdAndUpdate(newSale, {$addToSet: {'catalog':newSale._id}})
+                return newSale
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne(( email ))
+
+            if (!user) {
+                throw new AuthenticationError('No user found with that email!')
+            }
+
+            const correctPw = await user.isCorrectPassword(password)
+
+            if (!correctPw) {
+                throw new AuthenticationError('Incorrect password entered. Try again!')
+            }
+
+            const token = signToken(user)
+
+            return { token, user }
         }
     }
 }

@@ -16,6 +16,15 @@ const typeDefs = gql`
         name: String
     }
 
+    type Checkout {
+        session: ID
+      }
+    
+    type Auth {
+        token: ID
+        user: User
+    }
+    
     type Art {
         _id: ID
         title: String
@@ -29,6 +38,12 @@ const typeDefs = gql`
         categories: [Category]
         users(_id:ID): User
         artForSale(category: ID, title: String, id: ID): [Art]
+    }
+
+    type Mutation {
+        addUser(firstName: String!, lastName: String!, email: String!, password!): Auth
+        addArt(title: String, description: String, image: String, price: Int, category: ID): Art
+        login(email: String!, password: String!): Auth
     }
 `
 
