@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import Home from './pages/Home'
+import Home from './pages/Home/Home'
 import './App.css';
 import NavBar from './components/NavBar/NavBar'
 
