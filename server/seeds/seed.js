@@ -13,9 +13,9 @@ db.once('open', async () => {
 
     await User.deleteMany()
     const users = await User.insertMany([
-        { username: "Shaq", email: "shaq@gmail.com", password: "shaq01" },
-        { username: "Jrod", email: "jrod@yahoo.com", password: "jrod29" },
-        { username: "Rita", email: "rita@gmail.com", password: "rita123"}
+        { firstName: "Shaq", lastName: "Denobe", username: "Shaq", email: "shaq@gmail.com", password: "shaq01" },
+        { firstName: "Jrod", lastName: "Rivera",username: "Jrod", email: "jrod@yahoo.com", password: "jrod29" },
+        { firstName: "Rita", lastName: "Hendo", username: "Rita", email: "rita@gmail.com", password: "rita123"}
     ])
     console.log('************ Users seeded! ************');
 

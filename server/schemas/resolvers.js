@@ -27,9 +27,10 @@ const resolvers = {
 
             return await Art.find(params).populate('category')
         },
-        users: async (parent, { _id }) => {
+        users: async (parent, {_id}) => {
             if(_id) {
-                await User.findById(_id)
+                const user = await User.findById(_id)
+                return user
             }
             else { 
                 throw new AuthenticationError('No ID Provided!')
