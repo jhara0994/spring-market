@@ -11,9 +11,12 @@ function CategoryMenu() {
 
     const [ queryCategories ] = useLazyQuery(QUERY_CATEGORIES)
 
+    console.log(dispatch)
+
     useEffect(() => {
         const getCategoryData = async() => {
             const { data } = await queryCategories()
+            console.log(data)
 
             data.categories.forEach((category) => {
                 idbPromise('categories', 'put', category)
