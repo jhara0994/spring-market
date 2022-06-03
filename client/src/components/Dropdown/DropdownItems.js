@@ -47,3 +47,5 @@ function DropdownItems(props) {
         </div>
     )
 }
+
+export default DropdownItems

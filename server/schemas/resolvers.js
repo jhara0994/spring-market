@@ -44,6 +44,14 @@ const resolvers = {
 
             return { token, user }
         },
+        updateUser: async(parent, args, context) => {
+            if(context.user) {
+                return await User.findByIdAndUpdate(context.user._id, args, { new: true })
+            }
+            
+            throw new AuthenticationError("Account updates can only be made once logged in!")
+
+        },
         addArt: async(parent, args) => {
             try {
                 const newSale = await Art.create({ ...args })
