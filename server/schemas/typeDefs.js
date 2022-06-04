@@ -39,6 +39,7 @@ const typeDefs = gql`
         users(_id:ID): User
         artForSale(category: ID, title: String, id: ID): [Art]
         checkout(artForSale: [ID]!): Checkout
+        customer(sessionId: String): String
     }
 
     type Mutation {
@@ -46,8 +47,7 @@ const typeDefs = gql`
         updateUser(firstName: String, lastName: String, username: String, email: String, password: String): User
         addArt(title: String, description: String, image: String, price: Int, category: ID): Art
         updateArt(_id: ID!, title: String, description: String, image: String, price: Int, category: ID): Art
-        login(email: String!, password: String!): Auth
-        
+        login(email: String!, password: String!): Auth  
     }
 `
 

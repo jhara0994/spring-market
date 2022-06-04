@@ -81,6 +81,12 @@ const resolvers = {
               });
 
               return { session: session.id }
+        },
+        customer: async (parent, {sessionId}, context) => {
+            const session = await stripe.checkout.sessions.retrieve(sessionId);
+            const customer = await stripe.customers.retrieve(session.customer);
+            return (customer.name)
+           
         }
     },
     Mutation: {
@@ -105,6 +111,13 @@ const resolvers = {
                 return newSale
             } catch (err) {
                 console.log(err)
+            }
+        },
+        updateArt: async(parent, { _id, args }) => {
+            if(args) {
+                return await Art.findByIdAndUpdate(_id, { ...args })
+            } else {
+                return console.log("Art product has not been updated!")
             }
         },
         login: async (parent, { email, password }) => {
