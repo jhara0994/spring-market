@@ -1,7 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Category, Art, Order } = require('../models')
 const { signToken } = require('../utils/auth')
-// const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
     Query: {
@@ -35,6 +35,52 @@ const resolvers = {
             else { 
                 throw new AuthenticationError('No ID Provided!')
             }
+        },
+        checkout: async(parent, args, context) => {
+            const url = new URL(context.headers.referer).origin
+            console.log(url)
+
+            const order = await Order.create({ artForSale: args.arts })
+            console.log(order)
+
+            const userUpdate = await User.findByIdAndUpdate(args, {$addToSet: {orders: order._id}}, {new: true})
+            console.log(userUpdate)
+
+            const line_items = []
+            const { arts } = await order.populate('arts')
+            console.log(arts)
+
+            for(let i = 0; i < arts.length; i++) {
+                try {
+                    const art = await stripe.arts.create({
+                        title: arts[i].title,
+                        description: arts[i].description,
+                    })
+
+                    const price = await stripe.prices.create({
+                        art: art.id,
+                        unit_amount: arts[i].price*100,
+                        currency: 'usd'
+                    })
+
+                    line_items.push({
+                        price: price.id,
+                        quantity: 1
+                    })
+                } catch (err) {
+                    console.log(error)
+                }
+            }
+
+            const session = await stripe.checkout.sessions.create({
+                payment_method_types: ['card'],
+                line_items,
+                mode: 'payment',
+                success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+                cancel_url: `${url}/`
+              });
+
+              return { session: session.id }
         }
     },
     Mutation: {
