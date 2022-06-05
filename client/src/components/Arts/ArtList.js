@@ -36,10 +36,12 @@ function ArtList() {
     }
 
     const filteredArts = filterArts()
+    console.log(filteredArts)
 
     return (
         <div>
             <h2>ArtWorks for Sale</h2>
+            <h3></h3>
         </div>
     )
 }

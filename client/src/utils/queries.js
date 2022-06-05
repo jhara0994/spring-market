@@ -25,7 +25,7 @@ export const QUERY_ALL_ARTS = gql`
 `
 
 export const QUERY_ARTS = gql`
-    query Arts($category: ID, $title: String, artsId: ID)
+    query Arts($category: ID, $title: String, $artsId: ID){
         arts(category: $category, title: $title, id: $artsId){
             _id
             title
@@ -37,6 +37,7 @@ export const QUERY_ARTS = gql`
                 name
             }
         }
+    }
 
 `
 
