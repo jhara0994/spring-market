@@ -24,6 +24,22 @@ export const QUERY_ALL_ARTS = gql`
     }
 `
 
+export const QUERY_ARTS = gql`
+    query Arts($category: ID, $title: String, artsId: ID)
+        arts(category: $category, title: $title, id: $artsId){
+            _id
+            title
+            description
+            image
+            price
+            category {
+                _id
+                name
+            }
+        }
+
+`
+
 export const QUERY_USER = gql`
     query Users($id: ID) {
         users(_id: $id) {
