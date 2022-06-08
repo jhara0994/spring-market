@@ -26,6 +26,7 @@ function ArtList() {
     }
 
     function filterArts() {
+        console.log(data)
         if(!currentCategory) {
             return data.arts
         }
@@ -41,7 +42,24 @@ function ArtList() {
     return (
         <div>
             <h2>ArtWorks for Sale</h2>
-            <h3></h3>
+            <h3>{(filteredArts.length && currentCategory) ? `Category: ${filteredArts[0].category.name}` :  "" }</h3>
+            {data.products.length ? (
+                <div>
+                    {filterArts().map((arts) => (
+                        <ArtItem
+                            key={arts._id}
+                            _id={arts._id}
+                            image={arts.image}
+                            title={arts.title}
+                            description={arts.description}
+                            price={arts.price}
+                            category={arts.category}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <h4>No art is currently listed for sale!</h4>
+            )}
         </div>
     )
 }

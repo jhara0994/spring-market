@@ -26,21 +26,28 @@ db.once('open', async () => {
             title: "Shaka",
             description: "Custom made statue named after Shaka Zulu.",
             price: 2500,
-            image: "",
+            image: "Shaka.JPG",
             category: [categories[0]._id, categories[1]._id]
         },
         {
             title: "Savannah",
             description: "Cotton haired lady",
             price: 3500,
-            image: "",
+            image: "Savanna.JPG",
             category: [categories[0]._id, categories[1]._id]
         },
         {
             title: "Jane",
             description: "Sculpture of a lady made with beads and an assortment of homegoods.",
             price: 2500,
-            image: "",
+            image: "Jane.JPG",
+            category: [categories[0]._id, categories[1]._id]
+        },
+        {
+            title: "Delta Girl",
+            description: "Sculpture of a lady made with beads and an assortment of homegoods.",
+            price: 2500,
+            image: "Delta.JPG",
             category: [categories[0]._id, categories[1]._id]
         },
         {
