@@ -47,7 +47,7 @@ function ArtList() {
         <div>
             <h2>ArtWorks for Sale</h2>
             <h3>{(filteredArts.length && currentCategory) ? `Category: ${filteredArts[0].category.name}` :  "" }</h3>
-            {data.arts.length ? (
+            {data.artForSale.length ? (
                 <div>
                     {filterArts().map((arts) => (
                         <ArtItem

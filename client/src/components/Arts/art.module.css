@@ -1,0 +1,27 @@
+.artCard {
+    margin: 0px 10px 25px 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    border: solid 3px black;
+    width: 250px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.artCard:hover{
+    box-shadow: 20px 20px 8px 0 rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: .2s;
+    
+}
+
+.artCard img {
+    width: 70%;
+    height: 200px;
+    margin-bottom: 20px;
+}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useStoreContext } from '../../utils/GlobalState'
 import { ADD_TO_CART } from '../../utils/actions'
 import { idbPromise } from '../../utils/helpers'
+import css from './art.module.css'
 import Auth from '../../utils/auth'
 
 function ArtItem(item) {
@@ -22,17 +23,17 @@ function ArtItem(item) {
     }
 
     return (
-        <div>
+        <div className={css.artCard}>
             <Link to={`/art/${_id}`}>
                 <h3>{title}</h3>
                 {image && (
-                    <img alt={title} src={(image.includes('http') ? image : require(`../../assets/images/${image}`))} />
+                    <img className={css.img} alt={title} src={(image.includes('http') ? image : require(`../../assets/images/${image}`))} />
                 )}
                 <p>{description}</p>
             </Link>
             <div>
-                <div>${price}</div>
-                {category && <div>Category: {category.name}</div>}
+                <div><b>Buy Now: </b>${price}</div>
+                {category && <div><b>Category:</b> {category.name}</div>}
             </div>
         </div>
     )
