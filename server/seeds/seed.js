@@ -20,6 +20,7 @@ db.once('open', async () => {
     console.log('************ Users seeded! ************');
 
 
+    // Before completion, may be able to add multiple categories to arts. Will require change to Art Model.
     await Art.deleteMany()
     await Art.insertMany([
         {

@@ -19,11 +19,11 @@ const artSchema = new Schema({
         required: true,
         min: 0.99
     },
-    category: [{
+    category: {
         type: Schema.Types.ObjectId,
         ref: 'Category',
         required: true
-    }]
+    }
 })
 
 const Art = mongoose.model('Art', artSchema)
