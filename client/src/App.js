@@ -40,7 +40,7 @@ function App() {
           <NavBar />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/art' element={<Art />} />
+            {/* <Route path='/art' element={<Art />} /> */}
             <Route path='/contact' element={<Contact />} />
           </Routes>
         </StoreProvider>

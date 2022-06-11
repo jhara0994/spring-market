@@ -12,21 +12,21 @@ export const QUERY_CATEGORIES = gql`
 export const QUERY_ALL_ARTS = gql`
     query ArtForSale {
         artForSale {
-        _id
-        title
-        description
-        image
-        price
-        category {
-            name
-        }
+            _id
+            title
+            description
+            image
+            price
+            category {
+                name
+            }
         }
     }
 `
 
 export const QUERY_ARTS = gql`
     query Arts($category: ID, $title: String, $artsId: ID){
-        arts(category: $category, title: $title, id: $artsId){
+        artForSale(category: $category, title: $title, id: $artsId){
             _id
             title
             description

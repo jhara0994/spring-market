@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/Touch-of-Spring', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/Promise-of-Spring', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

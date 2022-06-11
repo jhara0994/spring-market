@@ -9,6 +9,8 @@ function ArtList() {
     const { currentCategory } = state
     const { data, loading, error } = useQuery(QUERY_ARTS)
 
+    console.log(data)
+
     if(loading) {
         return (
             <div>
@@ -20,18 +22,20 @@ function ArtList() {
     if(error) {
         return (
             <div>
-                Error
+                Error - No Art products have been listed for sale!
             </div>
         )
     }
 
     function filterArts() {
-        console.log(data)
+        console.log(data.artForSale)
+        console.log(data.artForSale[0].title)
+        console.log(data.artForSale[0].category)
         if(!currentCategory) {
-            return data.arts
+            return data.artForSale
         }
 
-        return data.arts.filter(
+        return data.artForSale.filter(
             (art) => art.category._id === currentCategory
         )
     }
@@ -43,7 +47,7 @@ function ArtList() {
         <div>
             <h2>ArtWorks for Sale</h2>
             <h3>{(filteredArts.length && currentCategory) ? `Category: ${filteredArts[0].category.name}` :  "" }</h3>
-            {data.products.length ? (
+            {data.arts.length ? (
                 <div>
                     {filterArts().map((arts) => (
                         <ArtItem
