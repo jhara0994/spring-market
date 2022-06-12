@@ -17,6 +17,7 @@ function CategoryMenu() {
         const getCategoryData = async() => {
             const { data } = await queryCategories()
             console.log(data)
+            console.log(data.categories)
 
             data.categories.forEach((category) => {
                 idbPromise('categories', 'put', category)
