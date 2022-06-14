@@ -6,7 +6,8 @@ import Cart from '../../components/Cart/Cart'
 function Home() {
     return(
        <CategoryMenu />,
-       <ArtList />
+       <ArtList />,
+       <Cart />
     )
 }
 
