@@ -8,7 +8,7 @@ import classes from './Contact.module.css'
 export default function Collab(props) {
     // Create state variables for the fields in the form
     // We are also setting their initial values to an empty string
-    const [name, setName] =useState('');
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [collabMessage, setCollabMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
